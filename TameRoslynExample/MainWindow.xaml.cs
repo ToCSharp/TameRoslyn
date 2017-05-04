@@ -1,19 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.Win32;
 using Zu.TameRoslyn.Syntax;
@@ -24,8 +14,9 @@ namespace TameRoslynExample
     {
         private readonly ObservableCollection<TameBaseRoslynNode> _nodeChangeItems =
             new ObservableCollection<TameBaseRoslynNode>();
-        private string _currentSource;
+
         private TameCompilationUnitSyntax _currentCU;
+        private string _currentSource;
         private TameBaseRoslynNode _selectedNode;
 
         public MainWindow()
@@ -63,7 +54,6 @@ namespace TameRoslynExample
             if (ind < lbNodes.Items.Count) lbNodes.SelectedIndex = ind;
             if (lbNodes.SelectedItem != null)
                 lbNodes.ScrollIntoView(lbNodes.SelectedItem);
-
         }
 
         private void Button_Click_5(object sender, RoutedEventArgs e)
@@ -75,10 +65,8 @@ namespace TameRoslynExample
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
             if (_selectedNode != null)
-            {
                 try
                 {
-
                     var code = tbNodeText.Text;
                     //_selectedNode.ReplaceNode(CreateSyntaxNode.CreateFormCode(code, _selectedNode.RoslynTypeName));
                     _selectedNode.ReplaceNode(code);
@@ -89,7 +77,6 @@ namespace TameRoslynExample
                 {
                     MessageBox.Show(ex.ToString());
                 }
-            }
         }
 
         private void lbNodes_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -114,7 +101,7 @@ namespace TameRoslynExample
             var newClass = new TameClassDeclarationSyntax
             {
                 Name = "MyClass",
-                ModifiersStr = "public static",
+                ModifiersStr = "public static"
             };
             // SyntaxNode of newClass
             var newClassNode = newClass.Node;
@@ -135,7 +122,7 @@ namespace TameRoslynExample
             });
 
             // add method to class by code
-            newClass.TaMembers.Add(new TameMethodDeclarationSyntax("private void Meth2() {}") { TaParent = newClass });
+            newClass.TaMembers.Add(new TameMethodDeclarationSyntax("private void Meth2() {}") {TaParent = newClass});
             // adding directly to lists IsChanged must be set to true
             newClass.IsChanged = true;
 
@@ -153,7 +140,7 @@ namespace TameRoslynExample
 
             // make CompilationUnit with namespace
             var cu = new TameCompilationUnitSyntax();
-            var ns = new TameNamespaceDeclarationSyntax { NameStr = "MyNamespace" };
+            var ns = new TameNamespaceDeclarationSyntax {NameStr = "MyNamespace"};
             ns.TaMembers.Add(newClass);
             cu.TaMembers.Add(ns);
 
