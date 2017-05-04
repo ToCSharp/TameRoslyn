@@ -20,7 +20,9 @@ namespace Zu.TameRoslyn.Syntax
         bool IsChanged { get; set; }
 
         string Source { get; }
+
         void SetNotChanged();
+
         IEnumerable<TameBaseRoslynNode> GetChildren();
         IEnumerable<TameBaseRoslynNode> GetTameFields();
         IEnumerable<TameBaseRoslynNode> Descendants(bool includeSelf = true);
