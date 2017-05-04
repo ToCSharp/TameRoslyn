@@ -1,0 +1,388 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4413865B-98AF-437C-9E2B-A0360CC8DCC5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TameRoslyn</RootNamespace>
+    <AssemblyName>TameRoslyn</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeAnalysis, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.Common.2.1.0\lib\netstandard1.3\Microsoft.CodeAnalysis.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeAnalysis.CSharp.2.1.0\lib\netstandard1.3\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.AppContext, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.AppContext.4.3.0\lib\net46\System.AppContext.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=1.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.3.1\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Console, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Console.4.3.0\lib\net46\System.Console.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Diagnostics.FileVersionInfo, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.FileVersionInfo.4.3.0\lib\net46\System.Diagnostics.FileVersionInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.StackTrace, Version=4.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.StackTrace.4.3.0\lib\net46\System.Diagnostics.StackTrace.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.4.3.0\lib\net46\System.IO.FileSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Reflection, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reflection.4.3.0\lib\net462\System.Reflection.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection.Metadata, Version=1.4.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reflection.Metadata.1.4.2\lib\portable-net45+win8\System.Reflection.Metadata.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.0\lib\net462\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Extensions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.Extensions.4.3.0\lib\net462\System.Runtime.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.InteropServices.4.3.0\lib\net462\System.Runtime.InteropServices.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.0\lib\net461\System.Security.Cryptography.Algorithms.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.0\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encoding.CodePages, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encoding.CodePages.4.3.0\lib\net46\System.Text.Encoding.CodePages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Thread, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Thread.4.3.0\lib\net46\System.Threading.Thread.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.ReaderWriter, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Xml.ReaderWriter.4.3.0\lib\net46\System.Xml.ReaderWriter.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.XmlDocument, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Xml.XmlDocument.4.3.0\lib\net46\System.Xml.XmlDocument.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.XPath, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Xml.XPath.4.3.0\lib\net46\System.Xml.XPath.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.XPath.XDocument, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Xml.XPath.XDocument.4.3.0\lib\net46\System.Xml.XPath.XDocument.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TameRoslynSyntaxGen\CreateSyntaxNode.cs" />
+    <Compile Include="TameRoslynSyntaxGen\DefaultValues.cs" />
+    <Compile Include="TameRoslynSyntaxGen\IdentifierToName.cs" />
+    <Compile Include="TameRoslynSyntaxGen\SetString.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameAccessorDeclarationSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameAccessorListSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameAliasQualifiedNameSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameAnonymousFunctionExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameAnonymousMethodExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameAnonymousObjectCreationExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameAnonymousObjectMemberDeclaratorSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameArgumentListSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameArgumentSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameArrayCreationExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameArrayRankSpecifierSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameArrayTypeSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameArrowExpressionClauseSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameAssignmentExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameAttributeArgumentListSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameAttributeArgumentSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameAttributeListSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameAttributeSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameAttributeTargetSpecifierSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameAwaitExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameBadDirectiveTriviaSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameBaseArgumentListSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameBaseCrefParameterListSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameBaseExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameBaseFieldDeclarationSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameBaseListSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameBaseMethodDeclarationSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameBaseParameterListSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameBasePropertyDeclarationSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameBaseTypeDeclarationSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameBaseTypeSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameBinaryExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameBlockSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameBracketedArgumentListSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameBracketedParameterListSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameBranchingDirectiveTriviaSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameBreakStatementSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameCasePatternSwitchLabelSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameCaseSwitchLabelSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameCastExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameCatchClauseSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameCatchDeclarationSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameCatchFilterClauseSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameCheckedExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameCheckedStatementSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameClassDeclarationSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameClassOrStructConstraintSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameCommonForEachStatementSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameCompilationUnitSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameConditionalAccessExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameConditionalDirectiveTriviaSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameConditionalExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameConstantPatternSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameConstructorConstraintSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameConstructorDeclarationSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameConstructorInitializerSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameContinueStatementSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameConversionOperatorDeclarationSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameConversionOperatorMemberCrefSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameCrefBracketedParameterListSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameCrefParameterListSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameCrefParameterSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameCrefSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameDeclarationExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameDeclarationPatternSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameDefaultExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameDefaultSwitchLabelSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameDefineDirectiveTriviaSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameDelegateDeclarationSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameDestructorDeclarationSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameDirectiveTriviaSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameDiscardDesignationSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameDocumentationCommentTriviaSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameDoStatementSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameElementAccessExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameElementBindingExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameElifDirectiveTriviaSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameElseClauseSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameElseDirectiveTriviaSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameEmptyStatementSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameEndIfDirectiveTriviaSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameEndRegionDirectiveTriviaSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameEnumDeclarationSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameEnumMemberDeclarationSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameEqualsValueClauseSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameErrorDirectiveTriviaSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameEventDeclarationSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameEventFieldDeclarationSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameExplicitInterfaceSpecifierSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameExpressionStatementSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameExternAliasDirectiveSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameFieldDeclarationSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameFinallyClauseSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameFixedStatementSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameForEachStatementSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameForEachVariableStatementSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameForStatementSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameFromClauseSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameGenericNameSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameGlobalStatementSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameGotoStatementSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameGroupClauseSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameIdentifierNameSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameIfDirectiveTriviaSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameIfStatementSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameImplicitArrayCreationExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameImplicitElementAccessSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameIncompleteMemberSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameIndexerDeclarationSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameIndexerMemberCrefSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameInitializerExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameInstanceExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameInterfaceDeclarationSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameInterpolatedStringContentSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameInterpolatedStringExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameInterpolatedStringTextSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameInterpolationAlignmentClauseSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameInterpolationFormatClauseSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameInterpolationSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameInvocationExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameIsPatternExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameJoinClauseSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameJoinIntoClauseSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameLabeledStatementSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameLambdaExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameLetClauseSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameLineDirectiveTriviaSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameLiteralExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameLoadDirectiveTriviaSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameLocalDeclarationStatementSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameLocalFunctionStatementSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameLockStatementSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameMakeRefExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameMemberAccessExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameMemberBindingExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameMemberCrefSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameMemberDeclarationSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameMethodDeclarationSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameNameColonSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameNameEqualsSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameNameMemberCrefSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameNamespaceDeclarationSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameNameSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameNullableTypeSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameObjectCreationExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameOmittedArraySizeExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameOmittedTypeArgumentSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameOperatorDeclarationSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameOperatorMemberCrefSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameOrderByClauseSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameOrderingSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameParameterListSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameParameterSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameParenthesizedExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameParenthesizedLambdaExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameParenthesizedVariableDesignationSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TamePatternSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TamePointerTypeSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TamePostfixUnaryExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TamePragmaChecksumDirectiveTriviaSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TamePragmaWarningDirectiveTriviaSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TamePredefinedTypeSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TamePrefixUnaryExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TamePropertyDeclarationSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameQualifiedCrefSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameQualifiedNameSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameQueryBodySyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameQueryClauseSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameQueryContinuationSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameQueryExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameReferenceDirectiveTriviaSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameRefExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameRefTypeExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameRefTypeSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameRefValueExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameRegionDirectiveTriviaSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameReturnStatementSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameSelectClauseSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameSelectOrGroupClauseSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameShebangDirectiveTriviaSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameSimpleBaseTypeSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameSimpleLambdaExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameSimpleNameSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameSingleVariableDesignationSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameSizeOfExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameSkippedTokensTriviaSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameStackAllocArrayCreationExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameStatementSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameStructDeclarationSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameStructuredTriviaSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameSwitchLabelSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameSwitchSectionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameSwitchStatementSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameThisExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameThrowExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameThrowStatementSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameTryStatementSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameTupleElementSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameTupleExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameTupleTypeSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameTypeArgumentListSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameTypeConstraintSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameTypeCrefSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameTypeDeclarationSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameTypeOfExpressionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameTypeParameterConstraintClauseSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameTypeParameterConstraintSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameTypeParameterListSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameTypeParameterSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameTypeSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameUndefDirectiveTriviaSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameUnsafeStatementSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameUsingDirectiveSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameUsingStatementSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameVariableDeclarationSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameVariableDeclaratorSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameVariableDesignationSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameWarningDirectiveTriviaSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameWhenClauseSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameWhereClauseSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameWhileStatementSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameXmlAttributeSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameXmlCDataSectionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameXmlCommentSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameXmlCrefAttributeSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameXmlElementEndTagSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameXmlElementStartTagSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameXmlElementSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameXmlEmptyElementSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameXmlNameAttributeSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameXmlNameSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameXmlNodeSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameXmlPrefixSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameXmlProcessingInstructionSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameXmlTextAttributeSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameXmlTextSyntax.cs" />
+    <Compile Include="TameRoslynSyntaxGen\TameYieldStatementSyntax.cs" />
+    <Compile Include="TameRoslynSyntax\CommentsRewriter.cs" />
+    <Compile Include="TameRoslynSyntax\IHaveIdentifier.cs" />
+    <Compile Include="TameRoslynSyntax\IRoslynNode.cs" />
+    <Compile Include="TameRoslynSyntax\SyntaxFactoryStr.cs" />
+    <Compile Include="TameRoslynSyntax\SyntaxFactoryStrGen.cs" />
+    <Compile Include="TameRoslynSyntax\TameBaseRoslynNode.cs" />
+    <Compile Include="TameRoslynSyntax\TameBaseRoslynNodeCreate.cs" />
+    <Compile Include="TameRoslynSyntax\TameBaseRoslynNodeExt.cs" />
+    <Compile Include="TameCompilationUnitSyntax.cs" />
+    <Compile Include="TameRoslynSyntax\TameSyntaxFacts.cs" />
+    <Compile Include="TameRoslynSyntax\TameSyntaxTokenList.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />
+    <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

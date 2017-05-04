@@ -1,0 +1,59 @@
+﻿<Window x:Class="TameRoslynExample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TameRoslynExample"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="362.606" Width="599.894">
+    <Grid>
+        <TabControl>
+            <TabItem Header="AST">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="241*"/>
+                        <ColumnDefinition Width="270*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="41"/>
+                        <RowDefinition Height="132*"/>
+                        <RowDefinition Height="65*"/>
+                        <RowDefinition Height="66*"/>
+                    </Grid.RowDefinitions>
+                    <ListBox x:Name="lbNodes" Grid.Row="1" Grid.RowSpan="3" SelectionChanged="lbNodes_SelectionChanged"/>
+                    <TextBox x:Name="tbNodeText" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" AcceptsReturn="True" Margin="0,0,0,29"/>
+                    <ListBox x:Name="lbTameFields" Grid.Column="1" Grid.Row="2" SelectionChanged="lbChanges_SelectionChanged"/>
+                    <Button Content="change" Grid.Column="1" HorizontalAlignment="Left" Margin="5,0,0,4" Grid.Row="1" VerticalAlignment="Bottom" Width="68" Click="Button_Click_4" Height="20"/>
+                    <Button Content="make new source" Grid.Column="1" HorizontalAlignment="Left" Margin="18,10,0,0" VerticalAlignment="Top" Width="142" Click="Button_Click_5" Height="20"/>
+                    <Button Content="make AST" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_7" Height="20"/>
+                    <Button Content="find" HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="75" Click="Button_Click_16" Height="20"/>
+                    <TextBox x:Name="tbSearchStr" Height="23" Margin="90,7,90,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Hello"/>
+                    <ListBox x:Name="lbStringProps" Grid.Column="1" Grid.Row="3"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Source">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="44"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBox x:Name="tbSource" Grid.Row="1" AcceptsReturn="True" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Text="// A Hello World! program in C#.&#xD;&#xA;using System;&#xD;&#xA;namespace HelloWorld&#xD;&#xA;{&#xD;&#xA;    class Hello &#xD;&#xA;    {&#xD;&#xA;        static void Main() &#xD;&#xA;        {&#xD;&#xA;            Console.WriteLine(&quot;Hello World!&quot;);&#xD;&#xA;&#xD;&#xA;            // Keep the console window open in debug mode.&#xD;&#xA;            Console.WriteLine(&quot;Press any key to exit.&quot;);&#xD;&#xA;            Console.ReadKey();&#xD;&#xA;        }&#xD;&#xA;    }&#xD;&#xA;}"/>
+                    <Button Content="open file" HorizontalAlignment="Left" Margin="104,13,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+                    <TextBox x:Name="tbFileName" Height="23" Margin="184,10,10,0" TextWrapping="Wrap" Text="file1.cs" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="tbNewSource" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"/>
+                    <Button Content="create" HorizontalAlignment="Left" Margin="10,13,0,0" VerticalAlignment="Top" Width="75" Click="ButtonCreateCU_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="StringTree">
+                <Grid Background="#FFE5E5E5">
+                    <TextBox x:Name="tbStringTree" TextWrapping="Wrap"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>
