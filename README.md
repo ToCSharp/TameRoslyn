@@ -1,5 +1,5 @@
 # TameRoslyn
-The mutable wrapper of Microsoft's .NET Compiler Platform ("Roslyn") syntax tree.
+The mutable wrapper of Microsoft's [.NET Compiler Platform ("Roslyn")](https://github.com/dotnet/roslyn) syntax tree.
 For simple manipulation of C# files.
 
 ## Example
