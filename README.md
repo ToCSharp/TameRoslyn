@@ -2,6 +2,15 @@
 The mutable wrapper of Microsoft's [.NET Compiler Platform ("Roslyn")](https://github.com/dotnet/roslyn) syntax tree.
 For simple manipulation of C# files.
 
+## Install TameRoslyn via NuGet
+
+.Net Framework >= 4.6.2 require.
+If you want to include TameRoslyn in your project, you can [install it directly from NuGet](https://www.nuget.org/packages/TameRoslyn/)
+
+```
+PM> Install-Package TameRoslyn
+```
+
 ## Example
 Look at TameRoslynExample.
 ```csharp
