@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyTitle("TameRoslyn")]
-[assembly: AssemblyDescription(".NET Compiler Platform (Roslyn) wrapper")]
+[assembly: AssemblyDescription(".NET Compiler Platform (Roslyn) mutable wrapper")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Oleg Zudov")]
 [assembly: AssemblyProduct("TameRoslyn")]
