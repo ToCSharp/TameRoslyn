@@ -1,6 +1,7 @@
 # TameRoslyn
 
 [![Join the chat at https://gitter.im/TameRoslyn/Lobby](https://badges.gitter.im/TameRoslyn/Lobby.svg)](https://gitter.im/TameRoslyn/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 The mutable wrapper of Microsoft's [.NET Compiler Platform ("Roslyn")](https://github.com/dotnet/roslyn) syntax tree.
 For simple manipulation of C# files.
 
