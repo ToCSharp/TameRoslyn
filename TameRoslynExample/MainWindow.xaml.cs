@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.Win32;
 using Zu.TameRoslyn.Syntax;
+using System.Collections.Generic;
 
 namespace TameRoslynExample
 {
@@ -122,7 +123,7 @@ namespace TameRoslynExample
             });
 
             // add method to class by code
-            newClass.TaMembers.Add(new TameMethodDeclarationSyntax("private void Meth2() {}") {TaParent = newClass});
+            newClass.TaMembers.Add(new TameMethodDeclarationSyntax("private void Meth2() {}") { TaParent = newClass });
             // adding directly to lists IsChanged must be set to true
             newClass.IsChanged = true;
 
@@ -140,7 +141,7 @@ namespace TameRoslynExample
 
             // make CompilationUnit with namespace
             var cu = new TameCompilationUnitSyntax();
-            var ns = new TameNamespaceDeclarationSyntax {NameStr = "MyNamespace"};
+            var ns = new TameNamespaceDeclarationSyntax { NameStr = "MyNamespace" };
             ns.TaMembers.Add(newClass);
             cu.TaMembers.Add(ns);
 
@@ -179,6 +180,81 @@ namespace MyNamespace
     }
 }");
             tbNewSource.Text = cu2.FormatedSource;
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var fileOrDir = tbConfigureAwaitFileOrDir.Text;
+            if (fileOrDir.EndsWith(".cs"))
+            {
+                lbAwaits.ItemsSource = null;
+                lbAwaits.ItemsSource = TameCompilationUnitSyntax.FromFile(fileOrDir).DescendantsAll().OfType<TameAwaitExpressionSyntax>().Select(v => v.FormatedSource);
+            }
+            else
+            {
+                var awaitExpressions = new List<string>();
+                foreach (var file in Directory.GetFiles(fileOrDir, "*.cs", SearchOption.AllDirectories))
+                {
+                    awaitExpressions.AddRange(TameCompilationUnitSyntax.FromFile(file).DescendantsAll().OfType<TameAwaitExpressionSyntax>().Select(v => v.FormatedSource));
+                }
+                lbAwaits.ItemsSource = null;
+                lbAwaits.ItemsSource = awaitExpressions;
+            }
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            var fileOrDir = tbConfigureAwaitFileOrDir.Text;
+            if (fileOrDir.EndsWith(".cs"))
+            {
+                var haveChanges = false;
+                var file = fileOrDir;
+                var cu = TameCompilationUnitSyntax.FromFile(file);
+                var items = cu.DescendantsAll().OfType<TameAwaitExpressionSyntax>().ToArray();
+                for (int i = 0; i < items.Length; i++)
+                {
+                    var item = items[i];
+                    if (!item.FormatedSource.EndsWith(".ConfigureAwait(false)"))
+                    {
+                        item.ReplaceNode(item.FormatedSource + ".ConfigureAwait(false)");
+                        haveChanges = true;
+                    }
+                }
+                if (haveChanges)
+                {
+                    var newSource = cu.FormatedSource;
+                    File.WriteAllText(file, newSource);
+                }
+                lbAwaits.ItemsSource = null;
+                lbAwaits.ItemsSource = TameCompilationUnitSyntax.FromFile(fileOrDir).DescendantsAll().OfType<TameAwaitExpressionSyntax>().Select(v => v.FormatedSource);
+            }
+            else
+            {
+                var awaitExpressions = new List<string>();
+                foreach (var file in Directory.GetFiles(fileOrDir, "*.cs", SearchOption.AllDirectories))
+                {
+                    var haveChanges = false;
+                    var cu = TameCompilationUnitSyntax.FromFile(file);
+                    var items = cu.DescendantsAll().OfType<TameAwaitExpressionSyntax>().ToArray();
+                    for (int i = 0; i < items.Length; i++)
+                    {
+                        var item = items[i];
+                        if (!item.FormatedSource.EndsWith(".ConfigureAwait(false)"))
+                        {
+                            item.ReplaceNode(item.FormatedSource + ".ConfigureAwait(false)");
+                            haveChanges = true;
+                        }
+                    }
+                    if (haveChanges)
+                    {
+                        var newSource = cu.FormatedSource;
+                        File.WriteAllText(file, newSource);
+                        awaitExpressions.AddRange(TameCompilationUnitSyntax.FromFile(file).DescendantsAll().OfType<TameAwaitExpressionSyntax>().Select(v => v.FormatedSource));
+                    }
+                }
+                lbAwaits.ItemsSource = null;
+                lbAwaits.ItemsSource = awaitExpressions;
+            }
         }
     }
 }

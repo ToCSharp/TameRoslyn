@@ -53,6 +53,22 @@
                     <TextBox x:Name="tbStringTree" TextWrapping="Wrap"/>
                 </Grid>
             </TabItem>
+            <TabItem Header=".ConfigureAwait(false)">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="174*"/>
+                        <ColumnDefinition Width="119*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="77*"/>
+                        <RowDefinition Height="227*"/>
+                    </Grid.RowDefinitions>
+                    <TextBox x:Name="tbConfigureAwaitFileOrDir" Height="23" Margin="10,10,10,0" TextWrapping="Wrap" Text="file or dir" VerticalAlignment="Top"/>
+                    <Button Content="find await" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" Width="95" Click="Button_Click"/>
+                    <ListBox x:Name="lbAwaits" Grid.Row="1"/>
+                    <Button Content="add .ConfigureAwait(false)" HorizontalAlignment="Left" Margin="120,38,0,0" VerticalAlignment="Top" Width="161" Click="Button_Click_2"/>
+                </Grid>
+            </TabItem>
         </TabControl>
 
     </Grid>
