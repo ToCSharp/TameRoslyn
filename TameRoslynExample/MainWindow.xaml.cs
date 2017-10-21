@@ -214,19 +214,19 @@ namespace MyNamespace
                 for (int i = 0; i < items.Length; i++)
                 {
                     var item = items[i];
-                    if (!item.FormatedSource.EndsWith(".ConfigureAwait(false)"))
+                    if (!item.Source.EndsWith(".ConfigureAwait(false)"))
                     {
-                        item.ReplaceNode(item.FormatedSource + ".ConfigureAwait(false)");
+                        item.ReplaceNode(item.Source + ".ConfigureAwait(false)");
                         haveChanges = true;
                     }
                 }
                 if (haveChanges)
                 {
-                    var newSource = cu.FormatedSource;
+                    var newSource = cu.Source;
                     File.WriteAllText(file, newSource);
                 }
                 lbAwaits.ItemsSource = null;
-                lbAwaits.ItemsSource = TameCompilationUnitSyntax.FromFile(fileOrDir).DescendantsAll().OfType<TameAwaitExpressionSyntax>().Select(v => v.FormatedSource);
+                lbAwaits.ItemsSource = TameCompilationUnitSyntax.FromFile(fileOrDir).DescendantsAll().OfType<TameAwaitExpressionSyntax>().Select(v => v.Source);
             }
             else
             {
@@ -239,15 +239,15 @@ namespace MyNamespace
                     for (int i = 0; i < items.Length; i++)
                     {
                         var item = items[i];
-                        if (!item.FormatedSource.EndsWith(".ConfigureAwait(false)"))
+                        if (!item.Source.EndsWith(".ConfigureAwait(false)"))
                         {
-                            item.ReplaceNode(item.FormatedSource + ".ConfigureAwait(false)");
+                            item.ReplaceNode(item.Source + ".ConfigureAwait(false)");
                             haveChanges = true;
                         }
                     }
                     if (haveChanges)
                     {
-                        var newSource = cu.FormatedSource;
+                        var newSource = cu.Source;
                         File.WriteAllText(file, newSource);
                         awaitExpressions.AddRange(TameCompilationUnitSyntax.FromFile(file).DescendantsAll().OfType<TameAwaitExpressionSyntax>().Select(v => v.FormatedSource));
                     }
