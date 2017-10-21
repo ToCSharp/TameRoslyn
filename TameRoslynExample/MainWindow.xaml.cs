@@ -207,8 +207,8 @@ namespace MyNamespace
             var fileOrDir = tbConfigureAwaitFileOrDir.Text;
             if (fileOrDir.EndsWith(".cs"))
             {
-                var haveChanges = false;
                 var file = fileOrDir;
+                var haveChanges = false;
                 var cu = TameCompilationUnitSyntax.FromFile(file);
                 var items = cu.DescendantsAll().OfType<TameAwaitExpressionSyntax>().ToArray();
                 for (int i = 0; i < items.Length; i++)

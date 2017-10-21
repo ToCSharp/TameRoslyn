@@ -15,6 +15,27 @@ PM> Install-Package TameRoslyn
 ```
 
 ## Example
+Adding .ConfigureAwait(false) 
+```csharp
+    var haveChanges = false;
+    var cu = TameCompilationUnitSyntax.FromFile(file);
+    var items = cu.DescendantsAll().OfType<TameAwaitExpressionSyntax>().ToArray();
+    for (int i = 0; i < items.Length; i++)
+    {
+        var item = items[i];
+        if (!item.FormatedSource.EndsWith(".ConfigureAwait(false)"))
+        {
+            item.ReplaceNode(item.FormatedSource + ".ConfigureAwait(false)");
+            haveChanges = true;
+        }
+    }
+    if (haveChanges)
+    {
+        var newSource = cu.FormatedSource;
+        File.WriteAllText(file, newSource);
+    }
+```
+
 Look at TameRoslynExample.
 ```csharp
             // Make class by setting props.
