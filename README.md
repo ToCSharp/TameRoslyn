@@ -23,15 +23,15 @@ Adding .ConfigureAwait(false)
     for (int i = 0; i < items.Length; i++)
     {
         var item = items[i];
-        if (!item.FormatedSource.EndsWith(".ConfigureAwait(false)"))
+        if (!item.Source.EndsWith(".ConfigureAwait(false)"))
         {
-            item.ReplaceNode(item.FormatedSource + ".ConfigureAwait(false)");
+            item.ReplaceNode(item.Source + ".ConfigureAwait(false)");
             haveChanges = true;
         }
     }
     if (haveChanges)
     {
-        var newSource = cu.FormatedSource;
+        var newSource = cu.Source;
         File.WriteAllText(file, newSource);
     }
 ```
