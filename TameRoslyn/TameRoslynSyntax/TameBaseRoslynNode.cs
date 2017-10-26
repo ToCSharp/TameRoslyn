@@ -84,19 +84,20 @@ namespace Zu.TameRoslyn.Syntax
             }
         }
 
-        public StringBuilder ToStringTree(StringBuilder sb = null, int intend = 0, int maxChars = 50)
+        public StringBuilder ToStringTree(StringBuilder sb = null, int intend = 0, int maxChars = 50, bool showTameType = false)
         {
             if (sb == null) sb = new StringBuilder();
             sb.AppendLine();
             sb.Append(' ', intend * 2);
-            sb.Append(Node.GetType().Name);
+            if(showTameType) sb.Append(GetType().Name);
+            else sb.Append(Node.GetType().Name);
             sb.Append("   ");
             var s = Source.Trim().Replace("\r\n", " ").Replace("\n", " ");
             while (s.Contains("  ")) s = s.Replace("  ", " ");
             sb.Append(s.Length > maxChars ? s.Substring(0, maxChars - 2) + ".." : s);
 
             foreach (var item in GetAllChildren())
-                sb.Append(item.ToStringTree(new StringBuilder(), intend + 1));
+                sb.Append(item.ToStringTree(new StringBuilder(), intend + 1, maxChars, showTameType));
             return sb;
         }
 

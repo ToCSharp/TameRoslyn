@@ -28,6 +28,6 @@ namespace Zu.TameRoslyn.Syntax
         IEnumerable<TameBaseRoslynNode> Descendants(bool includeSelf = true);
         IEnumerable<TameBaseRoslynNode> DescendantsAll(bool includeSelf = true);
         IEnumerable<TameBaseRoslynNode> Ancestors(bool includeSelf = false);
-        StringBuilder ToStringTree(StringBuilder sb, int intend = 0, int maxChars = 50);
+        StringBuilder ToStringTree(StringBuilder sb, int intend = 0, int maxChars = 50, bool showTameType = false);
     }
 }

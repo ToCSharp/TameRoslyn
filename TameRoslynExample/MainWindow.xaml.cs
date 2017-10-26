@@ -43,7 +43,8 @@ namespace TameRoslynExample
             //var root = CSharpSyntaxTree.ParseText(code).GetRoot();
             var usings = _currentCU.DescendantsAll().OfType<TameUsingDirectiveSyntax>().Select(v => v.NameStr).ToList();
             lbNodes.ItemsSource = _currentCU.DescendantsAll();
-            tbStringTree.Text = _currentCU.ToStringTree(null, 0, 70).ToString();
+
+            ShowStringTree(rbStringTreeTame.IsChecked == true);
         }
 
         private void Button_Click_16(object sender, RoutedEventArgs e)
@@ -87,6 +88,7 @@ namespace TameRoslynExample
             var fields = _selectedNode?.GetAllChildren();
             lbTameFields.ItemsSource = fields;
             lbStringProps.ItemsSource = _selectedNode?.GetStringFields().Select(v => $"{v.filedName} = \"{v.value}\"");
+            tbNodeType.Text = _selectedNode.GetType().Name;
         }
 
         private void lbChanges_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -255,6 +257,21 @@ namespace MyNamespace
                 lbAwaits.ItemsSource = null;
                 lbAwaits.ItemsSource = awaitExpressions;
             }
+        }
+
+        private void rbStringTreeTame_Checked(object sender, RoutedEventArgs e)
+        {
+            ShowStringTree(true);
+        }
+
+        private void ShowStringTree(bool showTameType)
+        {
+            tbStringTree.Text = _currentCU?.ToStringTree(null, 0, 70, showTameType).ToString();
+        }
+
+        private void rbStringTreeRoslyn_Checked(object sender, RoutedEventArgs e)
+        {
+            ShowStringTree(false);
         }
     }
 }

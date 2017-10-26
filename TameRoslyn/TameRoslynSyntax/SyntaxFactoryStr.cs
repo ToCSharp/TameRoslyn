@@ -110,7 +110,7 @@ namespace Zu.TameRoslyn.Syntax
         {
             if (code == null)
                 return null;
-            var str = $"void async Meth() {{ {code}; }}";
+            var str = $"void async Meth() {{\n {code}; \n}}";
             var st = SyntaxFactory.ParseSyntaxTree(str);
             return st?.GetRoot()?.DescendantNodes().OfType<AwaitExpressionSyntax>().FirstOrDefault();
         }
@@ -183,7 +183,7 @@ namespace Zu.TameRoslyn.Syntax
         {
             if (code == null)
                 return null;
-            var str = $"void Meth() {{ switch (obj)  {{ {code} break; }} }}";
+            var str = $"void Meth() {{ switch (obj)  {{\n {code} break; }} }}";
             var st = SyntaxFactory.ParseSyntaxTree(str);
             return st?.GetRoot()?.DescendantNodes().OfType<CaseSwitchLabelSyntax>().FirstOrDefault();
         }
@@ -295,7 +295,7 @@ namespace Zu.TameRoslyn.Syntax
         {
             if (code == null)
                 return null;
-            var str = $"void Meth() {{ switch(o1) {{ case o2: break;{code} break; }} }}";
+            var str = $"void Meth() {{ switch(o1) {{ case o2: break;\n{code} break; }} }}";
             var st = SyntaxFactory.ParseSyntaxTree(str);
             return st?.GetRoot()?.DescendantNodes().OfType<DefaultSwitchLabelSyntax>().FirstOrDefault();
         }
@@ -342,7 +342,7 @@ namespace Zu.TameRoslyn.Syntax
         {
             if (code == null)
                 return null;
-            var str = $"void Meth() {{ if(false) {{}}{code} }}";
+            var str = $"void Meth() {{ if(false) {{}}\n{code} \n}}";
             var st = SyntaxFactory.ParseSyntaxTree(str);
             return st?.GetRoot()?.DescendantNodes().OfType<ElseClauseSyntax>().FirstOrDefault();
         }
@@ -351,7 +351,7 @@ namespace Zu.TameRoslyn.Syntax
         {
             if (code == null)
                 return null;
-            var str = $"void Meth() {{ {code} }}";
+            var str = $"void Meth() {{\n {code} \n}}";
             var st = SyntaxFactory.ParseSyntaxTree(str);
             return st?.GetRoot()?.DescendantNodes().OfType<EmptyStatementSyntax>().FirstOrDefault();
         }
@@ -365,7 +365,7 @@ namespace Zu.TameRoslyn.Syntax
         {
             if (code == null)
                 return null;
-            var str = $"enum E {{ {code} }}";
+            var str = $"enum E {{\n {code} \n}}";
             var st = SyntaxFactory.ParseSyntaxTree(str);
             return st?.GetRoot()?.DescendantNodes().OfType<EnumMemberDeclarationSyntax>().FirstOrDefault();
         }
@@ -379,7 +379,7 @@ namespace Zu.TameRoslyn.Syntax
         {
             if (code == null)
                 return null;
-            var str = $"class C {{ {code} }}";
+            var str = $"class C {{\n   {code}\n}}";
             var st = SyntaxFactory.ParseSyntaxTree(str);
             return st?.GetRoot()?.DescendantNodes().OfType<EventFieldDeclarationSyntax>().FirstOrDefault();
         }
@@ -397,7 +397,7 @@ namespace Zu.TameRoslyn.Syntax
         {
             if (code == null)
                 return null;
-            var str = $"void Meth() {{ {code} }}";
+            var str = $"void Meth() {{\n   {code} \n}}";
             var st = SyntaxFactory.ParseSyntaxTree(str);
             return st?.GetRoot()?.DescendantNodes().OfType<ExpressionStatementSyntax>().FirstOrDefault();
         }
@@ -406,7 +406,7 @@ namespace Zu.TameRoslyn.Syntax
         {
             if (code == null)
                 return null;
-            var str = $"class C {{ {code} }}";
+            var str = $"class C {{\n   {code}\n}}";
             var st = SyntaxFactory.ParseSyntaxTree(str);
             return st?.GetRoot()?.DescendantNodes().OfType<FieldDeclarationSyntax>().FirstOrDefault();
         }
@@ -1742,9 +1742,9 @@ namespace Zu.TameRoslyn.Syntax
                 return null;
             SyntaxTree st;
             if (str.Trim().StartsWith("{"))
-                st = SyntaxFactory.ParseSyntaxTree($"void Meth() {str}");
+                st = SyntaxFactory.ParseSyntaxTree($"void Meth() {str}\n");
             else
-                st = SyntaxFactory.ParseSyntaxTree($"void Meth() {{ {str} }}");
+                st = SyntaxFactory.ParseSyntaxTree($"void Meth() {{\n {str} \n}}");
             var root = st?.GetRoot();
             return root?.DescendantNodes().OfType<BlockSyntax>()?.FirstOrDefault();
         }
@@ -1999,7 +1999,7 @@ namespace Zu.TameRoslyn.Syntax
         {
             if (code == null)
                 return null;
-            var str = $"void Meth() {{  return {code} }}";
+            var str = $"void Meth() {{\n  return {code} \n}}";
             var st = SyntaxFactory.ParseSyntaxTree(str);
             return st?.GetRoot()?.DescendantNodes().OfType<QueryExpressionSyntax>().FirstOrDefault();
         }
@@ -2138,7 +2138,7 @@ while(true)
         {
             if (code == null)
                 return null;
-            var str = $"void Meth() {{ {code} }}";
+            var str = $"void Meth() {{\n {code} \n}}";
             var st = SyntaxFactory.ParseSyntaxTree(str);
             //var ds = st?.GetRoot()?.DescendantNodes().OfType<FromClauseSyntax>();
             return st?.GetRoot()?.DescendantNodes().OfType<DoStatementSyntax>()?.FirstOrDefault();
@@ -2182,7 +2182,7 @@ while(true)
         {
             if (code == null)
                 return null;
-            var str = $"void Meth()  {code} ";
+            var str = $"void Meth()  {code} \n";
             var st = SyntaxFactory.ParseSyntaxTree(str);
             return st?.GetRoot()?.DescendantNodes().OfType<BlockSyntax>().FirstOrDefault();
         }
@@ -2306,7 +2306,7 @@ while(true)
         {
             if (declarationStr == null)
                 return null;
-            var str = $"void Meth() {{ try {{ }} catch{declarationStr} {{}} }}";
+            var str = $"void Meth() {{ try {{ }} catch{declarationStr} \n{{}} }}";
             var st = SyntaxFactory.ParseSyntaxTree(str);
             var ds = st?.GetRoot()?.DescendantNodes().OfType<CatchDeclarationSyntax>();
             return st?.GetRoot()?.DescendantNodes().OfType<CatchDeclarationSyntax>()?.FirstOrDefault();
@@ -2380,7 +2380,7 @@ while(true)
         {
             if (elseStr == null)
                 return null;
-            var str = $"void Meth() {{ if(false) {elseStr.Trim()} }}";
+            var str = $"void Meth() {{ if(false)\n {elseStr.Trim()} \n}}";
             //var str = $"{expressionStr.TrimEnd().TrimEnd(';')};";
             var st = SyntaxFactory.ParseSyntaxTree(str);
             var ds = st?.GetRoot()?.DescendantNodes().OfType<ElseClauseSyntax>();
